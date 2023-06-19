@@ -16,7 +16,7 @@ class Movie(models.Model):
 
 
 class Review(models.Model):
-    text = models.CharField(max_length=100)
+    text = models.CharField(max_length=500)
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie= models.ForeignKey(Movie, on_delete=models.CASCADE)
