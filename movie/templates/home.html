@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="position-relative overflow-hidden p-md-5 m-md-3 text-center jumbo rounded">
+    <div class="col-md-5 p-lg-2 mx-auto my-1 jumboText text-dark">
+        <h1 class="font-weight-bold my-4">Bear A Book Reviews</h1>
+        <h5 class="font-weight-bold">Unleash Your Inner Reader </h5>
+        <h5>Review a book once a week</h5>
+    </div>
+</div>
+
+<form action="">
+    <div class="mb-3">
+        <label class="form-label">Search for Books:</label>
+        <input type="text" name="searchMovie" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">
+        Search
+    </button>
+</form>
+{% if searchTerm %}
+<p class="my-3"> Searching for: {{ searchTerm }} </p>
+{% endif %}
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2">
+    {% for movie in movies %}
+    <div v-for="movie in movies" class="col">
+        <div class="card shadow ">
+            <img class="card-img-top" src="{{movie.image.url }}"/>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">{{ movie.title }}</h5>
+                {% if movie.genre %}
+                <h6><span class="badge bg-success">{{movie.genre}}</span></h6>
+                {% endif %}
+<!--                <p class="card-text">{{ movie.description }}</p>-->
+                <a href="{% url 'detail' movie.id %}" class="btn btn-primary">
+                    Reviews
+                </a>
+                {% if movie.url %}
+                <a href="{{ movie.url }}" target="_blank" class="btn btn-primary">
+                    Book Link
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<br/>
+<br/>
+{% endblock content %}

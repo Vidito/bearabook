@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container my-5">
+    <div class="p-5 text-center bg-body-tertiary rounded-3">
+        <img src="{% static 'images/bearabook_Logo.png' %}" width="100px" alt="bookabear" class="rounded-circle">
+        <h1 class="text-body-emphasis">BearABook</h1>
+        <h4 class="col-lg-8 mx-auto fs-5 text-muted">
+            BearABook is the product of Vahid (Pythonology).
+        </h4>
+        <div class="text-dark">
+            <h5 class="alert alert-warning">Read before using the website. Your account will be DELETED if violations
+                occur.</h5>
+            <p class="alert alert-info">We choose a book once a week. Having read the book, you write a review on
+                it.</p>
+            <p>You are responsible for what you publish.</p>
+            <p>Do NOT share detailed information about other people or organizations.</p>
+            <p>Use a secure password. You can NOT change it later</p>
+            <p>Never publish material that is obscene, racist, sexist, threatening, defamatory, or illegal.</p>
+        </div>
+        <div class="d-inline-flex gap-2 mb-5">{% if user.is_authenticated == False %}
+
+            <a class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill"
+               href="{% url 'signupaccount' %}" type="button">
+                Sign Up
+            </a>
+            <a class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button" href="{% url 'loginaccount' %}">
+                Login
+            </a>
+            {% endif %}
+
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
